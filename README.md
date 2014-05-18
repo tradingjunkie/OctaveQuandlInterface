@@ -2,18 +2,12 @@ These functions provide an interface between the Quandl financial database and O
 
 Prior to invoking any of the functions, make sure to execute
 
-<pre><code>
-addpath('/path/to/OctaveQuandlInterface')
-</code><pre>
+	addpath('/path/to/OctaveQuandlInterface')
 
 To import financial data into Octave, start by defining an Octave structure:
 
-<pre><code>
-Quandl.auth = token;
-</code><pre>
+	Quandl.auth = token;
 
 Then import data using the getQuandl.m function:
 
-<pre><code>
-data = getQuandl('GOOG/NASDAQ_MSFT',token,'cellstr');
-</code><pre>
+	data = getQuandl('GOOG/NASDAQ_MSFT',token,'cellstr');
