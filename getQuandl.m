@@ -106,6 +106,8 @@ function [output headers] = getQuandl(code,authcode,varargin)
         error('Quandl returned an empty CSV file. (Invalid Code Likely)');
     end
     
+    headers = headers(2:end);
+    
     rowz = length(csv)-1;
     if rowz == 0
         error('Dataset is empty')
