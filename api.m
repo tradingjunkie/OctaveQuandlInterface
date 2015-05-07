@@ -4,7 +4,7 @@ function output = api(path, varargin)
   p = p.addRequired('path');
   p = p.addOptional('params',struct());
   p = p.addOptional('version','v1');
-  p = p.addOptional('http','GET');
+  p = p.addOptional('https','GET');
   p = p.parse(path,varargin{:});
   path = p.Results.path;
   version = p.Results.version;
@@ -14,7 +14,7 @@ function output = api(path, varargin)
   params.('request_source') = 'matlab';
   params.('request_version') = '1.0';
   
-  url = strcat('http://www.quandl.com/api/', version, '/', path, '?');
+  url = strcat('https://www.quandl.com/api/', version, '/', path, '?');
   param_keys = fieldnames(params);
   for k = 1:numel(param_keys)
     param_values{k,1} = params.(param_keys{k,1});

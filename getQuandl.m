@@ -69,7 +69,7 @@ function [output headers] = getQuandl(code,authcode,varargin)
     % string
     % Check for authetication token in inputs or in memory.
     if size(authcode) == 0
-        'It would appear you arent using an authentication token. Please visit http://www.quandl.com/help/matlab or your usage may be limited.'
+        'It would appear you arent using an authentication token. Please visit https://www.quandl.com/account or your usage may be limited.'
     else
         params.('auth_token') = authcode;
     end
