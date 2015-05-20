@@ -145,7 +145,7 @@ function [output headers] = getQuandl(code,authcode,varargin)
     elseif strcmp(type, 'ASCII')
         output = csv;
     elseif strcmp(type, 'data')
-        output = [datenum(DATE) data];
+        output = [datenum(DATE,'yyyy-mm-dd') data];
     else
         error('Invalid format');
     end
