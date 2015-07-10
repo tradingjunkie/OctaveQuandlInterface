@@ -25,15 +25,27 @@ function [output headers] = getQuandl(code,authcode,varargin)
     pkg load general;
     % Parse input.
     p = inputParser();
-    p = p.addRequired('code');
-    p = p.addRequired('authcode');
-    p = p.addRequired('type');
-    p = p.addOptional('start_date',[]);
-    p = p.addOptional('end_date',[]);
-    p = p.addOptional('transformation',[]);
-    p = p.addOptional('collapse',[]);
-    p = p.addOptional('rows',[]);
-    p = p.parse(code,authcode,varargin{:});
+    try # For Octave versions pre 4.0.0
+        p = p.addRequired('code');
+        p = p.addRequired('authcode');
+        p = p.addRequired('type');
+        p = p.addOptional('start_date',[]);
+        p = p.addOptional('end_date',[]);
+        p = p.addOptional('transformation',[]);
+        p = p.addOptional('collapse',[]);
+        p = p.addOptional('rows',[]);
+        p = p.parse(code,authcode,varargin{:});
+    catch
+        p.addRequired('code');
+        p.addRequired('authcode');
+        p.addRequired('type');
+        p.addOptional('start_date',[]);
+        p.addOptional('end_date',[]);
+        p.addOptional('transformation',[]);
+        p.addOptional('collapse',[]);
+        p.addOptional('rows',[]);
+        p.parse(code,authcode,varargin{:});
+    end_try_catch     
     start_date = p.Results.start_date;
     end_date = p.Results.end_date;
     transformation = p.Results.transformation;
